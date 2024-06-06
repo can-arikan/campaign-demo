@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: campaign-demo
+  kafka:
+    producer:
+      bootstrap-servers: ${kafka.endpoint}
+    consumer:
+      auto-offset-reset: earliest
+      group-id: ${spring.application.name}
+      bootstrap-servers: ${kafka.endpoint}
+    topics:
+      events: "campaign-events"
+      transaction: "transactions"
+      approval-event: "campaign-offer-events"
+
+kafka:
+  endpoint: tkpay-kafka-bootstrap:9092
+
+springwolf:
+  docket:
+    base-package: com.valensas.tkpay
+    info:
+      title: ${spring.application.name}
+      version: 1.0.0
+    servers: {}
